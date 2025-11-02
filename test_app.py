@@ -1,13 +1,10 @@
-from app import app 
+from app import app
 
- 
+def test_home():
+    client = app.test_client()
 
-def test_home(): 
+    res = client.get("/")
 
-    client = app.test_client() 
+    assert res.status_code == 200
 
-    res = client.get("/") 
-
-    assert res.status_code == 200 
-
-    assert b"Hello" in res.data 
+    assert b"Hello" in res.data
